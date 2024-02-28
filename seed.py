@@ -1,5 +1,6 @@
-from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
+
+from connect_database import create_database_engine
 from database_models import Base, Group, Student, Lecturer, Subject, Grades
 from faker import Faker
 from random import randint, choice
@@ -13,7 +14,7 @@ subjects_name = ['Computer Science', 'Physics', 'History', 'Mathematics', 'Chemi
 
 fake = Faker()
 
-engine = create_engine('postgresql://postgres:testtest@127.0.0.1:5432/univerdb')
+engine = create_database_engine()
 Base.metadata.create_all(engine)
 
 Session = sessionmaker(bind=engine)

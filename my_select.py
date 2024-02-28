@@ -1,9 +1,9 @@
-from sqlalchemy import create_engine, func, desc
+from sqlalchemy import func, desc
 from sqlalchemy.orm import sessionmaker, Session
-from database_models import Student, Grades, Base, Subject, Group, Lecturer
+from connect_database import create_database_engine
+from database_models import Student, Grades, Subject, Group, Lecturer
 
-engine = create_engine('postgresql://postgres:testtest@127.0.0.1:5432/univerdb')
-Base.metadata.bind = engine
+engine = create_database_engine()
 
 DBSession = sessionmaker(bind=engine)
 session = DBSession()
